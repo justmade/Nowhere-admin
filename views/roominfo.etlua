@@ -1,0 +1,18 @@
+<h1>Room Info</h1>
+<ol>
+  <% for i, thing in ipairs(roomInfo) do %>
+    <span> ▶ </span>
+    <h3><%= "room id:" .. thing.roomid %>
+        <% local isLocked = "false" %>
+    	<% if  thing.locked then %>
+            <% isLocked = "true" %>
+        <% end %>
+        <p><%= "locked:" .. isLocked %></p>
+        <p><%= "owner:" .. thing.owner %></p>
+        <p><%= "ownerHead:"..thing.ownerHead %></p>
+        <p><%= "ownerName:" .. thing.ownerName %></p>
+        <p><%= "rname:" .. thing.rname %></p>
+        <p><%= "counts:" .. thing.counts %></p>
+    </h3>
+  <% end %>
+</ol>

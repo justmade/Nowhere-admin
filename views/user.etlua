@@ -1,0 +1,9 @@
+<h1>User</h1>
+<ol>
+    <span> ▶ </span>
+    <h3><%= userData.name %>
+        <p><%= "following:"..userData.following %></p>
+        <p><%= "exp:" .. userData.exp %></p>
+        <p ><%= "level:" .. userData.level %></p>
+    </h3>
+</ol>

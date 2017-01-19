@@ -1,0 +1,10 @@
+<h1>Server monitor</h1>
+<div id="Top" class="info">
+</div>
+<div class="front_page">
+    <% for i, m in ipairs(allData) do %>
+        <div class="allData">
+        	<p>/<%= i %>/ - <%= m.nick..m.score %></p>
+        </div>
+    <% end %>
+</div>

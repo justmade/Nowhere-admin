@@ -1,0 +1,8 @@
+<h1>Online Users</h1>
+<ol>
+  <% for i, thing in ipairs(userData) do %>
+    <div class="user">
+        <a href="<%="checkuser/"..i %>">/<%= i %>/ - <%=  thing.name %></a>
+    </div>
+  <% end %>
+</ol>
