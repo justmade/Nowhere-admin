@@ -1,7 +1,7 @@
 local Model   = require("lapis.db.model").Model
 local Servers = Model:extend("users")
 local json = require("json.json")
-
+local db    = require("lapis.db")
 local menu = {
     "userlist","roominfo"
 }
