@@ -7,9 +7,9 @@ local menu = {
 }
 
 return function(self)
+    db.query("set names utf8")
     self.page_title = "Index"
     self.menu = menu
-
     local allData = Servers:select()
     self.allData = allData
     -- self.userData = json.decode(lastData.online_users)or {}
