@@ -1,3 +1,4 @@
+print(package.path)
 local lapis = require("lapis")
 local json = require("json.json")
 local app = lapis.Application()
@@ -6,7 +7,7 @@ local csrf = require "lapis.csrf"
 local db    = require("lapis.db")
 local Model   = require("lapis.db.model").Model
 local Servers = Model:extend("servers")
-
+local respond_to = require ("lapis.application").respond_to
 
 local check_auth  = require "controller.check_auth"
 local UserList      = require("controller.userlist")
@@ -20,7 +21,7 @@ app.layout = require "views.layout"
 
 app:before_filter(check_auth)
 
-app:get("/", Index)
+app:match("/", respond_to(Index))
 
 app:post("/user/", function(self)
     db.query("set names utf8")
@@ -45,6 +46,9 @@ app:post("/user/", function(self)
 end)
 
 app:match("/userlist", UserList)
+
+app:match("/user/search", respond_to(Index))
+
 app:match("/roominfo", RoomInfo)
 app:match("/checkuser/:userID", User)
 return app

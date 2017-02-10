@@ -1,10 +1,18 @@
 <h1>Server monitor</h1>
 <div id="Top" class="info">
 </div>
-<div class="front_page">
-    <% for i, m in ipairs(allData) do %>
-        <div class="allData">
-        	<p>/<%= i %>/ - <%= m.nick..m.score %></p>
-        </div>
-    <% end %>
+
+
+<!-- User Junk -->
+<div class="admin_form">
+	<form action="<%="/user/search"%>" method="post">
+		<div>
+		<span class="fields">
+			<input name="searchname" type="text" value="<%='' %>" />
+		</span>
+			<span class="fields">
+				<button class="submit_search"><%= "Search" %></button>
+			</span>
+		</div>
+	</form>
 </div>

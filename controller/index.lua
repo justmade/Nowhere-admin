@@ -6,21 +6,44 @@ local menu = {
     "userlist","roominfo"
 }
 
-return function(self)
-    db.query("set names utf8")
-    self.page_title = "Index"
-    self.menu = menu
-    local allData = Servers:select()
-    self.allData = allData
-    -- self.userData = json.decode(lastData.online_users)or {}
-    -- local allRooms = json.decode(lastData.room_info) or {}
-    -- self.roomCounts = 0
-    -- for i,room in ipairs(allRooms) do
-    --     if room.snakeCount ~= 0 then
-    --         self.roomCounts = self.roomCounts +1
-    --     end
-    -- end
+-- return Index
+return {
 
+    before = function (self)
+        -- body...
+    end,
+    on_error = function(self)
+        self.errormsg = "error message"
+        return { render = "error"}
+    end,
+    POST = function(self)
+        db.query("set names utf8")
+        local name = "%"..self.params.searchname.."%"
+        -- local _user = Servers:select("where id = ?",1)
+        local allData = Servers:select()
+        self.allData = allData
+        self.page_title = "userinfo"
+        for i,v in ipairs(self.allData) do
+            if v.nick == self.params.searchname then
+                self.userData = v
+            end
+        end
+        -- ngx.say(_user.id)
+        -- self.userData = _user
 
-    return {render = "index"}
-end
+        if not self.userData then
+            self.errormsg = "can't find user"
+            return {render = "error"}
+        end
+
+        return { render = "user_info" }
+    end,
+    GET = function(self)
+        db.query("set names utf8")
+        self.page_title = "Index"
+        self.menu = menu
+        local allData = Servers:select()
+        self.allData = allData
+		return { render = "index" }
+	end
+}

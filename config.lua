@@ -8,7 +8,7 @@ config("development", {
         host = "127.0.0.1",
         port = "3306",
         user = "root",
-        password = "sty",
+        password = "123",
         database = "nowhere",
 	},
 })
@@ -21,7 +21,7 @@ config("production", {
         host = "127.0.0.1",
         port = "3306",
         user = "root",
-        password = "sty",
+        password = "123",
         database = "nowhere",
     },
 })

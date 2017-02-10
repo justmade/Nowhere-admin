@@ -1,0 +1,9 @@
+<h1>userinfo</h1>
+<ol>
+    <h3><%= userData.nick %>
+        <p><%= "rank:"..userData.id %></p>
+        <p><%= "score:"..userData.score %></p>
+        <p><%= "wolf winningrate:" .. userData.w_wr %></p>
+        <p><%= "people winningrate:" .. userData.p_wr %></p>
+    </h3>
+</ol>
